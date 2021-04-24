@@ -9,6 +9,45 @@
 <body>
     <div class="container">
         <h1>Welcome to the Pizza Place</h1>
+    <p>Come and try the best pizza you will ever taste!!</p>
+    <br>
+    <br>
+    <h2>What will be your order?</h2>
+    <form id="pizzas">
+        <div class="form-group">
+            <select class="form-control" id="size">
+                <option value="small">Small:Ksh.900.00</option>
+                <option value="medium">Medium:Ksh.1200.00</option>
+                <option value="large">Large:Ksh.1500.00</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group">
+            <select class="form-control" id="meattoppings">
+                <option value="sausage">Sausage:Ksh.250.00</option>
+                <option value="pepperoni">Pepperoni:Ksh.250.00</option>
+                <option value="bacon">Bacon:Ksh.300.00</option>
+                <option value="grilled chicken">Grilled Chicken:Ksh 350.00</option>
+                <option value="ground beef">Ground Beef:Ksh 300.00</option>
+                <option value="sliced ham">Sliced Ham:Ksh.350.00</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group">
+            <select class="form-control" id="veggietoppings">
+                <option value="pineapples">Pineapples:Ksh.250.00</option>
+                <option value="bell pepper">Bell Pepper:Ksh.200.00</option>
+                <option value="olives">Olives:Ksh.250.00</option>
+                <option value="red onion">Red onion:Ksh.100.00</option>
+                <option value="cherry tomatoes">Cherry Tomatoes:Ksh.100.00</option>
+            </select>
+        </div>
+        <br>
+        <button type="submit" class="btn-default">Pizza Order</button>
+        <h3>This is a confirmation of your pizza order!</h3>
+    </form>
+    <div id="order">
+    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
