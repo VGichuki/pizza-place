@@ -10,6 +10,7 @@
 h1{
     color: yellow;
     font-size: xx-large;
+    text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 p{
@@ -178,6 +179,6 @@ p{
   }
   .header{
     background-image: url("../images/cheesypizza.jpg");
-    padding: 200px;
-    width: auto;
+    padding: 50px;
   }
+  

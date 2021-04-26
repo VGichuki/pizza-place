@@ -10,7 +10,7 @@ class Pizza {
     }
   
     typePrice(){
-      if (this.type == "CHICKEN SUPREME"){
+      if (this.type == "CHICKENSUPREME"){
         this.price = 700;
         return this.price;
       } else {
