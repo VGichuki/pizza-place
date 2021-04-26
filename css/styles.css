@@ -1,7 +1,7 @@
 .taskbar{
     text-align: right;
     background-color: oblique;
-    color: black;
+    color: white;
     font-size: x-large;
     min-block-size: 3ch;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -14,7 +14,7 @@ h1{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 p{
-    color: black;
+    color: whitesmoke;
     font-size: larger;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
@@ -178,7 +178,9 @@ p{
     font-size: 10px;
   }
   .header{
-    background-image: url("../images/cheesypizza.jpg");
-    padding: 50px;
+    background-image: url("../images/pizza5.jpg");
+    padding: 30px;
   }
-  
+.footer{
+  background-image: url("../images/pizza4.jpg");
+}
