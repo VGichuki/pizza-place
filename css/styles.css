@@ -23,3 +23,16 @@ p{
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
 }
+#reserve {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
+    color: #cdcdcd;
+    border: solid #ffffff;
+    border-radius: 50px;
+    margin-right: 50px;
+    margin-left: 100px;
+  }
+  #reserve:hover {
+    color: #ffffff;
+    background: black;
+  }
