@@ -1,4 +1,4 @@
-class Pizza {
+function Pizza {
   constructor(type, size, crust, toppings, quantity, delivery){
   this.type = type;
   this.size = size;
@@ -9,100 +9,115 @@ class Pizza {
   this.basePrice = 600;
   }
 
-  typePrice(){
-    if (this.type == "CHICKEN SUPREME"){
-      this.price = 700;
-      return this.price;
-    } else {
-      return this.price;
+Pizza.prototype.toppingsBasedAmount = function(){
+    if(this.toppings.length != 0){
+      var toppingPrice = this.toppings.length *11;
+      return toppingPrice;
+    }else {
+      alert("please choose your Toppings !!")
     }
   }
 
-  priceBySize(){
-    if (this.size == "Large"){
-      return 1500;
-    } else if (this.size == "Medium"){
-      return 1000;
-    } else {
-      return 500;
-    }
+Pizza.prototype.sizeBasedAmount = function(){
+  if (this.size === "Small"){
+    return 900;
+  } else if(this.size === "Medium"){
+    return 1000;
+  } else if(this.size === "Large"){
+    return 1300;
+  } else {
+    alert ("Please select a size that you would prefer");
   }
+}
 
-  crustPrice(){
-    if (this.crust == "Tripple Cheese Crust"){
-      return 400;
-    } else if (this.crust == "Double Cheese Crust"){
-      return 300;
-    } else if (this.crust == "Puff Pastry"){
-      return 200;
-    } else if (this.crust == "Cheesy Crust"){
-      return 150;
-    } else {
-      return 0;
-    }
+Pizza.prototype.typeBasedAmount = function(){
+  if (this.type === "CHICKEN SUPREME"){
+    return 200;
+  } else if(this.type === "BEEF BBQ"){
+    return 200;
+  } else if(this.type === "VEGGIE TIKKA"){
+    return 200;
+  } else if(this.type === "FETA AND VEGGIE"){
+    return 200;
+  } else if(this.type === "PEPPERONI"){
+    return 200;
+  } else if(this.type === "TROPICAL VEGGIE"){
+    return 200;
+  } else {
+    alert ("Please select the type you would prefer");
   }
+}
 
-  toppingsPrice(){
-    if (this.toppings == "Extra Chicken"){
-      return 200;
-    } else {
-      return 0;
-    }
+Pizza.prototype.crustBasedAmount = function(){
+  if (this.crust === "Puff pastry"){
+    return 100;
+  } else if(this.crust === "Tripple Cheese Crust"){
+    return 150;
+  } else if(this.crust === "Double Cheesy Crust"){
+    return 200;
+  } else if(this.crust === "Cheesy Crust"){
+    return 250;
+  } else if(this.crust === "Classic Pizza Crust"){
+    return 300;
+  } else {
+    alert ("PLease select the type of crust you would prefer")
   }
+}
 
-  deliveryPrice(){
-    if (this.delivery == true){
-      return 200;
-    } else {
-      return 0;
-    }
+Pizza.prototype.deliveryBasedAmount = function(){
+  if (this.delivery === "Yes"){
+    return 0;
+  }else (this.delivery === "No"){
+    return 0;
+  } 
+}
+
+Pizza.prototype.quantityBasedAmount = function(){
+  if (this.quantity === "1"){
+    return 0;
+  }else if(this.quantity === "2"){
+    return 10;
+  }else if(this.quantity === "3"){
+    return 15;
+  }else if(this.quantity === "4"){
+    return 20;
+  }else if(this.quantity === "5"){
+    return 25;
+  }else if(this.quantity === "6"){
+    return 30;
+  } else {
+    alert ("This will cost you more")
   }
+}
 
-  totalPriceNoDelivery(){
-    let priceAtPointA = this.typePrice();
-    let priceAtPointB = this.priceBySize();
-    let priceAtPointC = this.toppingsPrice();
-    let priceAtPointD = this.crustPrice();
-
-    return priceAtPointA + priceAtPointB + priceAtPointC + priceAtPointD;
-  }
-
-  pricePerQuantity(){
-    let grossPrice = this.totalPriceNoDelivery();
-    return grossPrice * this.quantity;
-  }
-
-  totalPlusDelivery(){
-    let withoutDelivery = this.pricePerQuantity();
-    let deliveryFee = this.deliveryPrice();
-
-    return withoutDelivery + deliveryFee;
-  }
-
+Pizza.prototype.calculateCost = function(toppingsBasedAmt, sizeBasedAmt, typeBasedAmt, crustBasedAmt, deliveryBasedAmt, quantityBasedAmt){
+  var totalCost =toppingsBasedAmt +sizeBasedAmt +typeBasedAmt +crustBasedAmt +deliveryBasedAmt +quantityBasedAmt;
+  $("#checkout").html(checkout);
 }
 
 
-$(document).ready(()=>{
-  $("#pizza-one-form").submit((event)=>{
-    event.preventDefault();
-    let pizzaName = $("#pizza-one-label").text();
-    let pizzaSize = $("#size-selector").val();
-    let toppingType = $("#topping-selector").val();
-    let crustType = $("#crust-selector").val();
-    let pizzaQuantity = Number($("#pizza-quantity").val());
-    // let delivery = $("#to-be-delivered").is(":checked");
-    // let pickUp = $("#to-be-picked").is(":checked");
-  let chickenSupreme = new Pizza(pizzaName, pizzaSize, crustType, toppingType, pizzaQuantity, false);
-  $("#size-price").text(chickenSupreme.size + " " + chickenSupreme.type + ": " + "Ksh. " + chickenSupreme.priceBySize());
-  $("#crust-price").text(chickenSupreme.crust + ": " +  "Ksh. " + chickenSupreme.crustPrice());
-  $("#toppings-price").text(chickenSupreme.toppings + " Toppings" + ": " + "Ksh. " + chickenSupreme.toppingsPrice());
-  $("#delivery-price").text("Delivery: " + chickenSupreme.deliveryPrice());
-  $("#total").text("Total: " + "Ksh. " + chickenSupreme.totalPlusDelivery());
-  });
-});
-
+var pizza;
 $(document).ready(function(){
-  $("#checkOut").onclick(function(event){
-      alert (name + ", We have received your message. Thank you for reaching out to us.");
-  });    
+  $("#pizza-one-label").submit(function(event){
+    event.preventDefault();
+    $("#checkout").show();
+    var pizzaName = $("#pizza-one-label").text();
+    var pizzaSize = $("#size-selector").val();
+    var toppingsType = $("#topping-selector").val();
+    var crustType = $("#crust-selector").val();
+    var pizzaQuantity = Number($("#pizza-quantity").val());
+    // var delivery = $("#to-be-delivered").is(":checked");
+    // var pickUp = $("#to-be-picked").is(":checked");
+  
+   pizza = new Pizza(pizzaName, pizzaSize, toppingType, crustType, pizzaQuantity);
+
+   var toppingsBasedAmt = pizza.toppingsBasedAmount();
+   var sizeBasedAmt = pizza.sizeBasedAmount();
+   var typeBasedAmt = pizza.typeBasedAmount();
+   var crustBasedAmt = pizza.crustBasedAmount();
+   var deliveryBasedAmt = pizza.deliveryBasedAmount();
+   var quantityBasedAmt = pizza.quantityBasedAmount();
+
+   pizza.calculateCost(toppingsBasedAmt, sizeBasedAmt, typeBasedAmt, crustBasedAmt, deliveryBasedAmt, quantityBasedAmt);
+  });
 });
